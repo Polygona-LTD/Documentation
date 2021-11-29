@@ -154,7 +154,7 @@ const App = () => {
     <div>
       <div style={{ position: 'relative', height: '95vh' }}>
         <Polygona3DClient
-          consumerId="cults"
+          consumerId="YOUR_CONSUMER_ID"
           slug="customizable-minimalistic-egg-box"
           colorScheme="purple"
           objectColor="#b99aff"
@@ -163,6 +163,37 @@ const App = () => {
     </div>
   );
 };
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+## Handling events
+
+```javascript
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Polygona3DClient } from '../dist';
+
+const App = () => (
+  <div>
+    <div id="header" style={{ height: '64px', backgroundColor: '#32aaca' }} />
+    <div style={{ position: 'relative', height: '93vh', overflow: 'hidden' }}>
+      <Polygona3DClient
+        consumerId="YOUR_CONSUMER_ID"
+        slug="customizable-minimalistic-egg-box"
+        colorScheme="blue"
+        objectColor="#3182ce"
+        // Get loaded product info
+        onProductLoad={product => console.log(product)}
+        // Get download file urls
+        onRequestDownloadURL={fileUrls => console.log(fileUrls)}
+      >
+        {/* Insert your own custom button */}      
+        <button style={{ height: '40px' }}>3D Print it</button>
+      </Polygona3DClient>
+    </div>
+  </div>
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 ```

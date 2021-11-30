@@ -18,6 +18,7 @@ query products($consumerId: String!) {
     id
     slug
     name
+    fileCount
     description
     publishedAt
     images {
@@ -46,6 +47,7 @@ Example response:
         "id": "string",
         "slug": "string",
         "name": "string",
+        "fileCount": "number",
         "description": "string"
         "publishedAt": "string"
         "images": [ {"id:" "string", "url": "string"}, ... ]
@@ -63,6 +65,7 @@ query product($consumerId: String!, $slug: String!){
     id
     slug
     name
+    fileCount
     description
     publishedAt
     images {
@@ -91,6 +94,7 @@ Example response:
         "id": "string",
         "slug": "string",
         "name": "string",
+        "fileCount": "number",
         "description": "string"
         "publishedAt": "string"
         "images": [ {"id:" "string", "url": "string"}, ... ]

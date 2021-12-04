@@ -14,7 +14,7 @@ https://polygona-service.nw.r.appspot.com/graphql
 
 ```javascript
 query products($consumerId: String!, $data: ProductsQueryInput) {
-  products(consumerId: $consumerId, data: $ProductsQueryInput) {
+  products(consumerId: $consumerId, data: $data) {
     id
     slug
     name

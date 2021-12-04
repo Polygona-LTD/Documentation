@@ -19,6 +19,8 @@ query products($consumerId: String!) {
     slug
     name
     fileCount
+    isDownloadDisabled
+    isPrintDisabled
     description
     publishedAt
     images {
@@ -48,6 +50,8 @@ Example response:
         "slug": "string",
         "name": "string",
         "fileCount": "number",
+        "isDownloadDisabled": "boolean",
+        "isPrintDisabled": "boolean",
         "description": "string"
         "publishedAt": "string"
         "images": [ {"id:" "string", "url": "string"}, ... ]
@@ -66,6 +70,8 @@ query product($consumerId: String!, $slug: String!){
     slug
     name
     fileCount
+    isDownloadDisabled
+    isPrintDisabled
     description
     publishedAt
     images {
@@ -95,6 +101,8 @@ Example response:
         "slug": "string",
         "name": "string",
         "fileCount": "number",
+        "isDownloadDisabled": "boolean",
+        "isPrintDisabled": "boolean",
         "description": "string"
         "publishedAt": "string"
         "images": [ {"id:" "string", "url": "string"}, ... ]

@@ -13,8 +13,8 @@ https://polygona-service.nw.r.appspot.com/graphql
 ### Fetch all products
 
 ```javascript
-query products($consumerId: String!) {
-  products(consumerId: $consumerId) {
+query products($consumerId: String!, $data: ProductsQueryInput) {
+  products(consumerId: $consumerId, data: $ProductsQueryInput) {
     id
     slug
     name
@@ -35,7 +35,14 @@ Variables:
 
 ```javascript
 {
-  "consumerId": "string"
+  "consumerId": "string",
+  "data": {
+    "where": {
+      "fileCount": "number",
+      "isDownloadDisabled": "boolean",
+      "isPrintDisabled": "boolean",
+    }
+  }
 }
 ```
 
@@ -126,15 +133,15 @@ Polygona 3D Client is developed with React and GraphQL and can be embedded into 
 - Embed it into your application (React example)
 
 ```javascript
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-import { Polygona3DClient } from 'polygona-3d-client';
+import { Polygona3DClient } from "polygona-3d-client";
 
 const App = () => {
   return (
     <div>
-      <div style={{ position: 'relative', height: '95vh' }}>
+      <div style={{ position: "relative", height: "95vh" }}>
         <Polygona3DClient
           consumerId={YOUR_CONSUMER_ID}
           slug={product.slug}
@@ -146,7 +153,7 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
 ### Theming
@@ -156,15 +163,15 @@ Available color schemes: `gray`, `red`, `orange`, `yellow`, `green`, `teal`, `bl
 ## Example
 
 ```javascript
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-import { Polygona3DClient } from 'polygona-3d-client';
+import { Polygona3DClient } from "polygona-3d-client";
 
 const App = () => {
   return (
     <div>
-      <div style={{ position: 'relative', height: '95vh' }}>
+      <div style={{ position: "relative", height: "95vh" }}>
         <Polygona3DClient
           consumerId="YOUR_CONSUMER_ID"
           slug="customizable-minimalistic-egg-box"
@@ -176,36 +183,36 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
 ## Handling events
 
 ```javascript
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { Polygona3DClient } from '../dist';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { Polygona3DClient } from "../dist";
 
 const App = () => (
   <div>
-    <div id="header" style={{ height: '64px', backgroundColor: '#32aaca' }} />
-    <div style={{ position: 'relative', height: '93vh', overflow: 'hidden' }}>
+    <div id="header" style={{ height: "64px", backgroundColor: "#32aaca" }} />
+    <div style={{ position: "relative", height: "93vh", overflow: "hidden" }}>
       <Polygona3DClient
         consumerId="YOUR_CONSUMER_ID"
         slug="customizable-minimalistic-egg-box"
         colorScheme="blue"
         objectColor="#3182ce"
         // Get loaded product info
-        onProductLoad={product => console.log(product)}
+        onProductLoad={(product) => console.log(product)}
         // Get download file urls
-        onRequestDownloadURL={fileUrls => console.log(fileUrls)}
+        onRequestDownloadURL={(fileUrls) => console.log(fileUrls)}
       >
-        {/* Insert your own custom button */}      
-        <button style={{ height: '40px' }}>3D Print it</button>
+        {/* Insert your own custom button */}
+        <button style={{ height: "40px" }}>3D Print it</button>
       </Polygona3DClient>
     </div>
   </div>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 ```
